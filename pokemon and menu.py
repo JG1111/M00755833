@@ -14,12 +14,14 @@ fade_amount = 10
 def pulse(colour):
 
     fade_amount = 10
-    led = [(255,0,0)]*360
-    led[10] = (0, 255, 0)
-    led[10+60] = (0, 255, 0)
-    client.put_pixels(led)
-    client.put_pixels(led)
-    print(enumerate(led))
+    leds = [(255,0,0)]*360
+    client.put_pixels(leds)
+    client.put_pixels(leds)
+    for led in range(len(leds)):
+        leds[led] = (0, 255, 0)
+        time.sleep(.1)
+        client.put_pixels(leds)
+
 
 
 ###-----------------------------------------------------------------------------
